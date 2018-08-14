@@ -16,14 +16,32 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		timer = new Timer(1000 / 60, this);
 	}
 
-	void startGame() {
-		timer.start();
+void updateMenueState() {
+		
 	}
-
+	
+	void updateGameState() {
+		
+	}
+	
+	void updateEndstate()  {
+		
+	}
+	
+	void drawMenueState() {
+		
+	}
+	
+	void drawGameState() {
+		
+	}
+	
+	void drawEndState() {
+		
+	}
 	@Override
 	public void paintComponent(Graphics g) {
-		g.fillRect(10, 10, 100, 100);
-
+		//g.fillRect(10, 10, 100, 100);
 	}
 
 	@Override

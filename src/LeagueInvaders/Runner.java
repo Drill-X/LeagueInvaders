@@ -28,6 +28,6 @@ public class Runner {
 		frame.pack();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gamepanel.startGame();
+		//gamepanel.startGame();
 	}
 }

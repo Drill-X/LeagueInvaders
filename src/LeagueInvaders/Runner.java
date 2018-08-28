@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 
 public class Runner {
 	JFrame frame;
-	final int WIDTH = 500;
-	final int HIEGHT = 800;
+	static final int WIDTH = 500;
+	static final int HEIGHT = 800;
 	static GamePanel gamepanel;
 
 	public Runner() {
@@ -23,8 +23,8 @@ public class Runner {
 	void setup() {
 		frame.add(gamepanel);
 		frame.addKeyListener(gamepanel);
-		frame.setSize(WIDTH, WIDTH);
-		frame.getContentPane().setPreferredSize(new Dimension(WIDTH, HIEGHT));
+		frame.setSize(WIDTH, HEIGHT);
+		frame.getContentPane().setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		frame.pack();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

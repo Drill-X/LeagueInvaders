@@ -1,5 +1,6 @@
 package LeagueInvaders;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,44 +12,66 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Timer timer;
-
+	final int MENU_STATE = 0;
+	final int GAME_STATE = 1;
+	final int END_STATE = 2;
+	int currentState = MENU_STATE;
+	//GameObject Gobject;
 	public GamePanel() {
 		timer = new Timer(1000 / 60, this);
+		//Gobject = new GameObject(10,10,10,10);
+		timer.start();
 	}
-
-void updateMenueState() {
+	void updateMenuState() {
 		
 	}
-	
 	void updateGameState() {
 		
 	}
 	
-	void updateEndstate()  {
+	void updateEndState() {
 		
 	}
 	
-	void drawMenueState() {
-		
+	void drawMenuState(Graphics g) {
+		g.setColor(Color.BLUE);
+		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT);    
 	}
 	
-	void drawGameState() {
-		
+	void drawGameState(Graphics g) {
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT); 
 	}
 	
-	void drawEndState() {
-		
+	void drawEndState(Graphics g) {
+		g.setColor(Color.RED);
+		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT); 
 	}
 	@Override
 	public void paintComponent(Graphics g) {
 		//g.fillRect(10, 10, 100, 100);
+		//Gobject.draw(g);
+		 if(currentState == MENU_STATE){
+	         drawMenuState(g);
+	 }else if(currentState == GAME_STATE){
+	         drawGameState(g);
+	 }else if(currentState == END_STATE){
+	         drawEndState(g);}
 	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		// System.out.println("test");
-		repaint();
+		System.out.println("test");
+		//Gobject.update();
+		 if(currentState == MENU_STATE){
+	         updateMenuState();
+	 }else if(currentState == GAME_STATE){
+	         updateGameState();
+	 }else if(currentState == END_STATE){
+	         updateEndState();}
+			repaint();
 	}
 
 	@Override
@@ -61,7 +84,14 @@ void updateMenueState() {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("testP");
-	}
+		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+			currentState++;
+			if(currentState > END_STATE){
+                currentState = MENU_STATE;
+        }
+        }
+		}
+	
 
 	@Override
 	public void keyReleased(KeyEvent e) {
@@ -69,3 +99,4 @@ void updateMenueState() {
 		System.out.println("testR");
 	}
 }
+

@@ -1,6 +1,7 @@
 package LeagueInvaders;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +17,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
 	int currentState = MENU_STATE;
+	Font titleFont = new Font("Arial", Font.PLAIN, 48);
+	Rocketship rocket = new Rocketship(250, 700, 50,50);
 	//GameObject Gobject;
 	public GamePanel() {
 		timer = new Timer(1000 / 60, this);
@@ -35,17 +38,25 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	
 	void drawMenuState(Graphics g) {
 		g.setColor(Color.BLUE);
-		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT);    
+		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT);   
+		g.setColor(Color.BLACK);
+		g.setFont(titleFont);
+        g.drawString("Legue Invaders", 100, 100);
 	}
 	
 	void drawGameState(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT); 
+		rocket.draw(g);
 	}
 	
 	void drawEndState(Graphics g) {
 		g.setColor(Color.RED);
-		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT); 
+		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT);
+		g.setColor(Color.BLACK);
+		g.setFont(titleFont);
+        g.drawString("Game Over", 100, 100);
+        
 	}
 	@Override
 	public void paintComponent(Graphics g) {

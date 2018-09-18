@@ -15,17 +15,22 @@ boolean goRight = false;
 	}
 	void update(){
 		if(goUp == true) {
-			setY(y - speed);
+			y -= speed;
+			System.out.println("UpdateU");
 		}
 		if(goDown == true) {
 			setY(y + speed);
+			System.out.println("UpdateD");
 		}
 		if(goLeft == true) {
-			setX(x + speed);
+			setX(x - speed);
+			System.out.println("UpdateL");
 		}
 		if(goRight == true) {
-			setX(x - speed);
+			setX(x + speed);
+			System.out.println("UpdateR");
 		}
+		System.out.println("Update");
 	}
 	
 	void draw(Graphics g) {

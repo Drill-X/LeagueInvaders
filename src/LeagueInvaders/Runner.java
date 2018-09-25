@@ -9,7 +9,6 @@ public class Runner {
 	static final int WIDTH = 500;
 	static final int HEIGHT = 800;
 	static GamePanel gamepanel;
-
 	public Runner() {
 		frame = new JFrame();
 	}
@@ -30,4 +29,10 @@ public class Runner {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//gamepanel.startGame();
 	}
+	
+	
+	
+
+
+	
 }

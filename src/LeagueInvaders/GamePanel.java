@@ -18,73 +18,79 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int END_STATE = 2;
 	int currentState = MENU_STATE;
 	Font titleFont = new Font("Arial", Font.PLAIN, 48);
-	Rocketship rocket = new Rocketship(250, 700, 50,50);
-	//GameObject Gobject;
+	Rocketship rocket = new Rocketship(250, 700, 50, 50);
+	// GameObject Gobject;
 	ObjectManager manager;
+
 	public GamePanel() {
 		timer = new Timer(1000 / 60, this);
-		//Gobject = new GameObject(10,10,10,10);
+		// Gobject = new GameObject(10,10,10,10);
 		timer.start();
 		manager = new ObjectManager(rocket);
 	}
+
 	void updateMenuState() {
-		
+
 	}
+
 	void updateGameState() {
 		manager.update();
+		manager.manageEnemies();
 	}
-	
+
 	void updateEndState() {
-		
+
 	}
-	
+
 	void drawMenuState(Graphics g) {
 		g.setColor(Color.BLUE);
-		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT);   
+		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT);
 		g.setColor(Color.BLACK);
 		g.setFont(titleFont);
-        g.drawString("Legue Invaders", 100, 100);
+		g.drawString("Legue Invaders", 100, 100);
 	}
-	
+
 	void drawGameState(Graphics g) {
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT); 
+		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT);
 		manager.draw(g);
 	}
-	
+
 	void drawEndState(Graphics g) {
 		g.setColor(Color.RED);
 		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT);
 		g.setColor(Color.BLACK);
 		g.setFont(titleFont);
-        g.drawString("Game Over", 100, 100);
-        
+		g.drawString("Game Over", 100, 100);
+
 	}
+
 	@Override
 	public void paintComponent(Graphics g) {
-		//g.fillRect(10, 10, 100, 100);
-		//Gobject.draw(g);
-		 if(currentState == MENU_STATE){
-	         drawMenuState(g);
-	 }else if(currentState == GAME_STATE){
-	         drawGameState(g);
-	 }else if(currentState == END_STATE){
-	         drawEndState(g);}
+		// g.fillRect(10, 10, 100, 100);
+		// Gobject.draw(g);
+		if (currentState == MENU_STATE) {
+			drawMenuState(g);
+		} else if (currentState == GAME_STATE) {
+			drawGameState(g);
+		} else if (currentState == END_STATE) {
+			drawEndState(g);
+		}
 	}
-	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("test");
-		//Gobject.update();
-		 if(currentState == MENU_STATE){
-	         updateMenuState();
-	 }else if(currentState == GAME_STATE){
-	         updateGameState();
-	 }else if(currentState == END_STATE){
-	         updateEndState();}
-			repaint();
+		// Gobject.update();
+		if (currentState == MENU_STATE) {
+			updateMenuState();
+		} else if (currentState == GAME_STATE) {
+			updateGameState();
+		} else if (currentState == END_STATE) {
+			updateEndState();
+		}
+		repaint();
 	}
 
 	@Override
@@ -97,46 +103,44 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("testP");
-		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			currentState++;
-			if(currentState > END_STATE){
-                currentState = MENU_STATE;
-        }
-        }
-		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-		rocket.goRight = true;
+			if (currentState > END_STATE) {
+				currentState = MENU_STATE;
+			}
 		}
-		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			rocket.goRight = true;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			rocket.goLeft = true;
-			}
-	if(e.getKeyCode() == KeyEvent.VK_UP) {
-		rocket.goUp = true;
 		}
-		if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-		rocket.goDown = true;
-			}
-		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-			manager.addProjectile(new Projectile(rocket.x, rocket.y, 10, 10));
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			rocket.goUp = true;
 		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			rocket.goDown = true;
 		}
-	
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			manager.addProjectile(new Projectile(rocket.x + 21, rocket.y, 10, 10));
+		}
+	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("testR");
-		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			rocket.goRight = false;
-			}
-			if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-				rocket.goLeft = false;
-				}
-		if(e.getKeyCode() == KeyEvent.VK_UP) {
+		}
+		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			rocket.goLeft = false;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			rocket.goUp = false;
-			}
-			if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			rocket.goDown = false;
-				}
+		}
 	}
 }
-

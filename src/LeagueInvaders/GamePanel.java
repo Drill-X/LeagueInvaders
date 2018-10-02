@@ -36,6 +36,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	void updateGameState() {
 		manager.update();
 		manager.manageEnemies();
+		manager.checkCollision();
+		manager.purgeObjects();
+		if(rocket.isAlive == false) {
+			currentState = END_STATE;
+			//System.out.println("test");
+		}
 	}
 
 	void updateEndState() {
@@ -81,8 +87,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("test");
 		// Gobject.update();
+		System.out.println("SCORE = " + manager.score);
 		if (currentState == MENU_STATE) {
 			updateMenuState();
 		} else if (currentState == GAME_STATE) {
@@ -96,13 +102,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("testT");
+		//System.out.println("testT");
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("testP");
+		//System.out.println("testP");
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			currentState++;
 			if (currentState > END_STATE) {
@@ -129,7 +135,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("testR");
+		//System.out.println("testR");
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			rocket.goRight = false;
 		}

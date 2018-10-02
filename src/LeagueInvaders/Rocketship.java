@@ -14,23 +14,24 @@ boolean goRight = false;
 		speed = 5;
 	}
 	void update(){
+		 super.update();
 		if(goUp == true) {
 			y -= speed;
-			System.out.println("UpdateU");
+			//System.out.println("UpdateU");
 		}
 		if(goDown == true) {
 			setY(y + speed);
-			System.out.println("UpdateD");
+		//	System.out.println("UpdateD");
 		}
 		if(goLeft == true) {
 			setX(x - speed);
-			System.out.println("UpdateL");
+		//	System.out.println("UpdateL");
 		}
 		if(goRight == true) {
 			setX(x + speed);
-			System.out.println("UpdateR");
+		//	System.out.println("UpdateR");
 		}
-		System.out.println("Update");
+		//System.out.println("Update");
 	}
 	
 	void draw(Graphics g) {

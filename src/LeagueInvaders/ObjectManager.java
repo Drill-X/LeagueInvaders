@@ -9,6 +9,7 @@ public class ObjectManager {
 	boolean isAlive = true;
 	long enemyTimer = 0;
 	int enemySpawnTime = 1000;
+	int score = 0;
 	ArrayList<Projectile> projectileArray = new ArrayList<Projectile>();
 	ArrayList<Alien> alienArray = new ArrayList<Alien>();
 
@@ -55,7 +56,31 @@ void purgeObjects() {
 	for (int i = 0; i < alienArray.size() ; i++) {
 		if(alienArray.get(i).isAlive == false) {
 			alienArray.remove(i);
-		}
+		}	
 	}
-}		
+	for (int j = 0; j < projectileArray.size() ; j++) {
+		if(projectileArray.get(j).isAlive == false) {
+			projectileArray.remove(j);
+		}}
+}	
+
+void checkCollision() {
+	 for(Alien a : alienArray){
+	        if(player.collisionBox.intersects(a.collisionBox)){
+	        	player.isAlive = false;
+	        }
+	}
+	 for (int i = 0; i < projectileArray.size(); i++) {
+		 for (int j = 0; j < alienArray.size(); j++) {
+		 if(projectileArray.get(i).collisionBox.intersects(alienArray.get(j).collisionBox)){
+	        	projectileArray.get(i).isAlive = false;
+	        	alienArray.get(j).isAlive = false;
+	        	score++;
+	        }
+	}}
+}
+
+int getScore() {
+	return score;
+}
 }

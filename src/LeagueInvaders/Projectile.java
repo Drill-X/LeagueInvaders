@@ -9,6 +9,7 @@ int speed = 10;
 		super(x, y, width, height);
 	}
 void update() {
+	 super.update();
 	y -= speed;
 	if(y < 0) {
 		isAlive = false;

@@ -88,7 +88,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		// Gobject.update();
-		System.out.println("SCORE = " + manager.score);
+		//System.out.println("SCORE = " + manager.getScore());
 		if (currentState == MENU_STATE) {
 			updateMenuState();
 		} else if (currentState == GAME_STATE) {

@@ -83,4 +83,5 @@ void checkCollision() {
 int getScore() {
 	return score;
 }
+
 }

@@ -113,6 +113,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			currentState++;
 			if (currentState > END_STATE) {
 				currentState = MENU_STATE;
+				rocket = new Rocketship(250, 700, 50, 50);
+			manager = new ObjectManager(rocket);	
 			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {

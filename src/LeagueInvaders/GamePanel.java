@@ -117,6 +117,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			manager = new ObjectManager(rocket);	
 			}
 		}
+		if(rocket.x >= 0 && rocket.x <= 500 && rocket.y >= 0 && rocket.y <= 800) {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			rocket.goRight = true;
 		}
@@ -132,8 +133,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			manager.addProjectile(new Projectile(rocket.x + 21, rocket.y, 10, 10));
 		}
+	}else {
+		rocket.x = 250;
+		rocket.y = 700;
 	}
-
+	}
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub

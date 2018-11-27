@@ -7,12 +7,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Timer timer;
+    public static  BufferedImage alienImg;
+    public static BufferedImage rocketImg;
+    public static BufferedImage bulletImg;
+    public static BufferedImage spaceImg;
 	final int MENU_STATE = 0;
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
@@ -27,6 +34,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		// Gobject = new GameObject(10,10,10,10);
 		timer.start();
 		manager = new ObjectManager(rocket);
+        try {
+            alienImg = ImageIO.read(this.getClass().getResourceAsStream("alien.png"));
+            rocketImg = ImageIO.read(this.getClass().getResourceAsStream("rocket.png"));
+            bulletImg = ImageIO.read(this.getClass().getResourceAsStream("bullet.png"));
+            spaceImg = ImageIO.read(this.getClass().getResourceAsStream("space.png"));
+    } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+    }
 	}
 
 	void updateMenuState() {
@@ -57,8 +73,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void drawGameState(Graphics g) {
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT);
+		g.drawImage(GamePanel.spaceImg, 0, 0, Runner.WIDTH, Runner.HEIGHT, null);
+		//g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT);
 		manager.draw(g);
 	}
 

@@ -12,7 +12,7 @@ public class Alien extends GameObject{
 
 	void update() {
 		 super.update();
-		y++;
+		y+=5;
 	}
 	void draw(Graphics g) {
 	      g.drawImage(GamePanel.alienImg, x, y, width, height, null);

@@ -8,8 +8,9 @@ public class ObjectManager {
 	Rocketship player;
 	boolean isAlive = true;
 	long enemyTimer = 0;
-	int enemySpawnTime = 1000;
+	int enemySpawnTime = 1;
 	int score = 0;
+	int highscore = 0;
 	ArrayList<Projectile> projectileArray = new ArrayList<Projectile>();
 	ArrayList<Alien> alienArray = new ArrayList<Alien>();
 
@@ -82,6 +83,15 @@ void checkCollision() {
 
 int getScore() {
 	return score;
+}
+
+int getHighScore() {
+	if(score >= highscore) {
+		highscore = score;
+		return highscore;	
+		}else{         
+		return highscore;
+	}      
 }
 
 }

@@ -8,9 +8,9 @@ public class ObjectManager {
 	Rocketship player;
 	boolean isAlive = true;
 	long enemyTimer = 0;
-	int enemySpawnTime = 1;
+	int enemySpawnTime = 10;
 	int score = 0;
-	int highscore = 0;
+	int highscore = score;
 	ArrayList<Projectile> projectileArray = new ArrayList<Projectile>();
 	ArrayList<Alien> alienArray = new ArrayList<Alien>();
 
@@ -86,7 +86,8 @@ int getScore() {
 }
 
 int getHighScore() {
-	if(score >= highscore) {
+	if(score > highscore) {
+		System.out.println("score " + score + " highscore " + highscore);
 		highscore = score;
 		return highscore;	
 		}else{         
